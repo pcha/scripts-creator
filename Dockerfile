@@ -11,7 +11,6 @@ RUN apk add build-base musl-dev
 COPY ./ ./
 RUN go mod download -x
 
-RUN ls -la
 RUN go get -d -v cmd/api
 RUN go build ./cmd/api
 
