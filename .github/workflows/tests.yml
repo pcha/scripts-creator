@@ -1,0 +1,19 @@
+name: Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+  # need checkout before using compose-action
+    - uses: actions/checkout@v2
+    - uses: isbang/compose-action@v1.0.0
+      with:
+        compose-file: './docker-compose-test.yml'
+        down-flags: '--volumes'
